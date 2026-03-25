@@ -14,13 +14,39 @@ import Logout from "../components/Logout";
 import Profile from "../dashboard/Profile";
 import Orders from "../dashboard/Orders";
 import Checkout from "../context/checkout";
-import OrderProgress from "../userorder/orderprogress"; 
+import OrderProgress from "../userorder/orderprogress";
+import Home from "../Home"; 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    children: []
+    children: [
+      {
+        index: true,
+        element: <Home />
+      },
+      {
+        path: "/login",
+        element: <Login />
+      },
+      {
+        path: "/sign-up",
+        element: <Signup />
+      },
+      {
+        path: "/logout",
+        element: <Logout />
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />
+      },
+      {
+        path: "/Checkout/orderprogress",
+        element: <OrderProgress />
+      }
+    ]
   },
   {
     path: '/admin/dashboard',
@@ -52,26 +78,6 @@ const router = createBrowserRouter([
         element: <Orders />
       }
     ]
-  },
-  {
-    path: "/sign-up",
-    element: <Signup />
-  },
-  {
-    path: "/login",
-    element: <Login />
-  },
-  {
-    path: "/logout",
-    element: <Logout />
-  },
-  {
-    path: "/checkout",
-    element: <Checkout />
-  },
-  {
-    path:"/Checkout/orderprogress",
-    element: <OrderProgress />
   }
 ]);
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { data as localData } from '../data/data.js'; // renamed to avoid naming conflict
-import { CartContext } from '../context/CartContext';
+import { CartContext } from '../context/CartContext.jsx';
 
 const Food = () => {
   const [foods, setFoods] = useState([]);
@@ -59,21 +59,25 @@ const Food = () => {
         <div>
           <p className='font-bold text-gray-700'>Filter Type</p>
           <div className='flex flex-wrap'>
-            <button onClick={resetFilters} className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'>All</button>
-            <button onClick={() => filterType('burger')} className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'>Burgers</button>
-            <button onClick={() => filterType('pizza')} className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'>Pizza</button>
-            <button onClick={() => filterType('salad')} className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'>Salads</button>
-            <button onClick={() => filterType('chicken')} className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'>Chicken</button>
+            <button onClick={resetFilters} className='m-1 border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white cursor-pointer mx-2 px-4 py-1 rounded'>All</button>
+            <button onClick={() => filterType('burger')} className='m-1 border border-black-600 text-orange-600 hover:bg-orange-600 hover:text-white cursor-pointer mx-2  px-4 py-1 rounded'>Burgers</button>
+            <button onClick={() => filterType('pizza')} className='m-1 border border-black-600 text-orange-600 hover:bg-orange-600 hover:text-white cursor-pointer mx-2  px-4 py-1 rounded'>Pizza</button>
+            <button onClick={() => filterType('salad')} className='m-1 border border-black-600 text-orange-600 hover:bg-orange-600 hover:text-white cursor-pointer mx-2  px-4 py-1 rounded'>Salads</button>
+            <button onClick={() => filterType('chicken')} className='m-1 border border-black-600 text-orange-600 hover:bg-orange-600 hover:text-white cursor-pointer mx-2  px-4 py-1 rounded'>Chicken</button>
           </div>
         </div>
 
         <div>
           <p className='font-bold text-gray-700'>Filter Price</p>
           <div className='flex justify-between max-w-[390px] w-full'>
-            <button onClick={() => filterPrice('$')} className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'>$</button>
-            <button onClick={() => filterPrice('$$')} className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'>$$</button>
-            <button onClick={() => filterPrice('$$$')} className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'>$$$</button>
-            <button onClick={() => filterPrice('$$$$')} className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'>$$$$</button>
+            <button onClick={() => filterPrice('$')} className='m-1 border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white cursor-pointer mx-2 px-4 py-1 rounded'>$
+            </button>
+            <button onClick={() => filterPrice('$$')} className='m-1 border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white cursor-pointer mx-2 px-4 py-1 rounded'>$$
+            </button>
+            <button onClick={() => filterPrice('$$$')} className='m-1 border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white cursor-pointer mx-2 px-4 py-1 rounded'>$$$
+            </button>
+            <button onClick={() => filterPrice('$$$$')} className='m-1 border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white cursor-pointer mx-2 px-4 py-1 rounded'>$$$$
+            </button>
           </div>
         </div>
       </div>
@@ -83,7 +87,7 @@ const Food = () => {
         {displayedFoods.map((item, index) => (
           <div
             key={item._id || item.id || index}
-            className='border shadow-lg rounded-lg hover:scale-105 duration-300'
+            className='border-none shadow-lg rounded-lg hover:scale-105 duration-300 cursor-pointer'
           >
             <img
               src={item.image_url || item.image}
@@ -100,7 +104,7 @@ const Food = () => {
               </button>
               <p>
                 <span className='bg-orange-500 text-white p-1 rounded-full'>
-                  {item.price || item.food_price}
+                  Ksh {item.price || item.food_price}
                 </span>
               </p>
             </div>
@@ -113,7 +117,7 @@ const Food = () => {
         <div className='text-center mt-6'>
           <button
             onClick={toggleView}
-            className='bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition duration-300'
+            className='bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition duration-300 cursor-pointer'
           >
             {showAll ? 'View Less' : 'View More'}
           </button>
